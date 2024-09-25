@@ -1,0 +1,54 @@
+[33mcommit 5349c33e0026b555ee333614374d06e062858c70[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Wed Sep 25 15:48:25 2024 -0300
+
+    Por alguns erros na APIKEY do chatGPT e o limite de requisoes, foi retirada a sua implementacao
+
+[33mcommit 1ae3c177b9f162d32c29232a5b2b16934f93799b[m
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Wed Sep 25 15:10:00 2024 -0300
+
+    Criada classe ConsultaChatGPT, que faz a integracao com a api do chatGPT, para traducoes
+
+[33mcommit fd624aa973ea7248cf8e5a5da41a9e5cd49466a5[m
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Wed Sep 25 14:31:33 2024 -0300
+
+    Criado metodo que instancia as series buscadas e lista por genero
+
+[33mcommit 7a192e9927005bb942f0ce064775684a359031f1[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Alex Rodrigues Holanda <80990365+alexzxcg@users.noreply.github.com>
+Date:   Tue Sep 24 16:07:35 2024 -0300
+
+    Update README.md
+
+[33mcommit e3d8ca31e6ec9f7ae8b480b63dd406c0ea7dc3ec[m
+Merge: 2166c0b ea91a1e
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Tue Sep 24 15:50:57 2024 -0300
+
+    Merge branch 'main' of github.com:alexzxcg/Java-ScreenMatch-Com-JPA
+
+[33mcommit 2166c0b6b74dbc8058f5e45ee2cf687247e53de3[m
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Tue Sep 24 15:50:39 2024 -0300
+
+    Adicionada opcao ListarSeriesBuscadas / Criada a classe Serie e ENUM Categoria
+
+[33mcommit ea91a1e0835323b285505d37bb4ff78d0feff73c[m
+Author: Alex Rodrigues Holanda <80990365+alexzxcg@users.noreply.github.com>
+Date:   Tue Sep 24 15:02:46 2024 -0300
+
+    Update README.md
+
+[33mcommit 3cd79dc586894f89e4c46802f5258fd244ea5db9[m
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Tue Sep 24 15:01:56 2024 -0300
+
+    README criado
+
+[33mcommit 65a86ddfcfde4ef389afbfaeb89a44effe4de609[m
+Author: Alex <alex-xp123@hotmail.com>
+Date:   Tue Sep 24 14:59:12 2024 -0300
+
+    First commit
