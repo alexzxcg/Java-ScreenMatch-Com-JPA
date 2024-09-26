@@ -31,6 +31,7 @@ public class Serie {
 
     private String sinopse;
 
+    @Transient
     private List<Episodio> episodios = new ArrayList<>();
 
     public Serie(DadosSerie dadosSerie){
@@ -43,7 +44,6 @@ public class Serie {
         this.sinopse = ConsultaMyMemory.obterTraducao(dadosSerie.sinopse());
     }
 
-    @Transient
     public List<Episodio> getEpisodios() {
         return episodios;
     }
