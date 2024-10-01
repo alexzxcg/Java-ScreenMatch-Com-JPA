@@ -26,3 +26,14 @@ foi criada uma classe Série para representar a entidade com seus dados específ
   Essa refatoração otimizou o processo de busca e persistência, reduzindo a necessidade de chamadas repetidas à API e garantindo que os episódios estejam associados às séries de forma persistente, utilizando as anotações JPA necessárias para a integridade dos relacionamentos no banco de dados.
 
 - Dia 30 de setembro de 2024, foi implementado dois métodos novos com buscas personalizadas usando as derived queries do [Spring Boot JPA](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html) para realizar buscas com base no nome da série e no nome de um ator. Para viabilizar essas consultas, foi fundamental ler a documentação e entender a estrutura básica de uma derived query no JPA.
+- Dia 01 de outubro de 2024, aprofundei ainda mais meus conhecimentos sobre derived queries no Spring Boot JPA, criando novos métodos de buscas personalizadas para otimizar a consulta de séries no banco de dados. Utilizei várias anotações e operadores específicos para melhorar a precisão e a performance dessas consultas.
+
+  Entre os novos métodos implementados, destacam-se:
+
+  - Listagem do Top 5 séries: Aqui utilizei o operador OrderBy combinado com Desc, que ordena os resultados por uma coluna específica, como avaliação ou número de temporadas, de forma decrescente. Assim, foi possível limitar o resultado às cinco séries com maior destaque em uma métrica específica.
+
+  - Busca por gênero: Este método permite filtrar séries por um gênero específico. A consulta usa a convenção de nomeação baseada em atributos do modelo, como findByGenre, facilitando a filtragem direta no banco de dados.
+
+  - Consulta personalizada com base em temporadas e avaliação: Para essa consulta, implementei um método que permite buscar séries com um número mínimo de temporadas informado pelo usuário. Usei o operador Equals para garantir que o total de temporadas informado fosse exatamente o desejado, enquanto o operador GreaterThanEqual permitiu definir uma avaliação mínima, assegurando que somente séries com uma pontuação igual ou superior fossem retornadas.
+    
+  Essas funcionalidades aprimoram a flexibilidade do sistema, permitindo que o usuário refine suas buscas de maneira eficiente e com base em múltiplos critérios, aproveitando ao máximo o poder das derived queries do Spring Data JPA.
