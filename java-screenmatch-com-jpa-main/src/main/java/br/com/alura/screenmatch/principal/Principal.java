@@ -180,8 +180,9 @@ public class Principal {
         leitura.nextLine();
         System.out.println("Digite qual a avaliação minima que a serie precisa");
         var avaliacao = leitura.nextDouble();
-        List<Serie> serieBuscadaPorTemporadaEAvaliacao = repositorio.findByTotalTemporadasEqualsAndAvaliacaoGreaterThanEqual(totalDeTemporadas, avaliacao);
-        System.out.println("Series com o total de temporada = " + totalDeTemporadas + " e avaliação maior ou igual a " + avaliacao);
-        serieBuscadaPorTemporadaEAvaliacao.forEach(System.out::println);
+        List<Serie> filtroSeries = repositorio.seriesPorTemporadaEAValiacao(totalDeTemporadas, avaliacao);
+        System.out.println("*** Séries filtradas ***");
+        filtroSeries.forEach(s ->
+                System.out.println(s.getTitulo() + "  - avaliação: " + s.getAvaliacao()));
     }
 }
