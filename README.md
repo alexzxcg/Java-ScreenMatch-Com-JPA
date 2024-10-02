@@ -26,6 +26,7 @@ foi criada uma classe Série para representar a entidade com seus dados específ
   Essa refatoração otimizou o processo de busca e persistência, reduzindo a necessidade de chamadas repetidas à API e garantindo que os episódios estejam associados às séries de forma persistente, utilizando as anotações JPA necessárias para a integridade dos relacionamentos no banco de dados.
 
 - Dia 30 de setembro de 2024, foi implementado dois métodos novos com buscas personalizadas usando as derived queries do [Spring Boot JPA](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html) para realizar buscas com base no nome da série e no nome de um ator. Para viabilizar essas consultas, foi fundamental ler a documentação e entender a estrutura básica de uma derived query no JPA.
+  
 - Dia 01 de outubro de 2024, aprofundei ainda mais meus conhecimentos sobre derived queries no Spring Boot JPA, criando novos métodos de buscas personalizadas para otimizar a consulta de séries no banco de dados. Utilizei várias anotações e operadores específicos para melhorar a precisão e a performance dessas consultas.
 
   Entre os novos métodos implementados, destacam-se:
@@ -37,3 +38,22 @@ foi criada uma classe Série para representar a entidade com seus dados específ
   - Consulta personalizada com base em temporadas e avaliação: Para essa consulta, implementei um método que permite buscar séries com um número mínimo de temporadas informado pelo usuário. Usei o operador Equals para garantir que o total de temporadas informado fosse exatamente o desejado, enquanto o operador GreaterThanEqual permitiu definir uma avaliação mínima, assegurando que somente séries com uma pontuação igual ou superior fossem retornadas.
     
   Essas funcionalidades aprimoram a flexibilidade do sistema, permitindo que o usuário refine suas buscas de maneira eficiente e com base em múltiplos critérios, aproveitando ao máximo o poder das derived queries do Spring Data JPA.
+
+- Dia 02 de setembro de 2024, explorei o uso de JPQL (Java Persistence Query Language) para realizar consultas no banco de dados, focando em aumentar a flexibilidade e a manutenibilidade do código. Durante esse processo, refatorei um método e criei um novo, ambos com o objetivo de facilitar futuras refatorações e garantir a portabilidade, caso o banco de dados utilizado venha a ser alterado.
+  - Método Refatorado: O método seriesPorTemporadaEAValiacao foi ajustado para buscar séries que tenham até um número máximo de temporadas e uma avaliação mínima, utilizando JPQL:
+    ~~~~
+    @Query("select s from Serie s WHERE s.totalTemporadas <= :totalTemporadas AND s.avaliacao >= :avaliacao")
+    List<Serie> seriesPorTemporadaEAValiacao(int totalTemporadas, double avaliacao);
+    ~~~~
+    A função associada permite que o usuário forneça os parâmetros diretamente, permitindo filtrar as séries de forma personalizada e exibindo o resultado conforme as especificações.
+    
+  - Novo Método Criado: Foi implementado o método episodiosPorTrecho, que busca episódios com base em um trecho do título fornecido pelo usuário. Esse método utiliza o operador ILIKE para garantir uma busca insensível a maiúsculas e minúsculas:
+    ~~~~
+    @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE e.titulo ILIKE %:trechoEpisodio%")
+    List<Episodio> episodiosPorTrecho(String trechoEpisodio);
+    ~~~~
+    Assim, o usuário pode informar parte do nome de um episódio e obter uma lista de resultados com detalhes como o título da série e o número do episódio.
+
+  A escolha de JPQL foi proposital, visando melhorar a flexibilidade do código para futuras refatorações. Como o JPQL é uma linguagem agnóstica de banco de dados, ele permite que as consultas permaneçam funcionais mesmo que haja mudanças no sistema de banco de dados,     por exemplo, de PostgreSQL para MySQL ou outro SGBD. Isso evita a dependência de funcionalidades específicas de um banco de dados, aumentando a portabilidade e reutilização do código em diferentes ambientes. Dessa forma, caso haja necessidade de ajustes nas consultas    ou na troca do banco de dados, as mudanças podem ser feitas de forma mais simples e sem a necessidade de reescrever grandes partes do código.
+
+
