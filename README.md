@@ -7,7 +7,7 @@ Projeto desenvolvido no segundo curso da formação Avançando com Java da Alura
 
 - Evoluir no projeto Screenmatch, iniciado no primeiro curso da formação, criando um menu com várias opções;
 - Modelar as abstrações da aplicação através de classes, enums, atributos e métodos;
-- Consumir a API do ChatGPT;
+- Consumir a API do [MyMemory](https://mymemory.translated.net/doc/spec.php);
 - Utilizar o Spring Data JPA para persistir dados no banco;
 - Conhecer vários tipos de banco de dados e utilizar o PostgreSQL;
 - Trabalhar com vários tipos de consultas ao banco de dados;
@@ -56,4 +56,9 @@ foi criada uma classe Série para representar a entidade com seus dados específ
 
   A escolha de JPQL foi proposital, visando melhorar a flexibilidade do código para futuras refatorações. Como o JPQL é uma linguagem agnóstica de banco de dados, ele permite que as consultas permaneçam funcionais mesmo que haja mudanças no sistema de banco de dados,     por exemplo, de PostgreSQL para MySQL ou outro SGBD. Isso evita a dependência de funcionalidades específicas de um banco de dados, aumentando a portabilidade e reutilização do código em diferentes ambientes. Dessa forma, caso haja necessidade de ajustes nas consultas    ou na troca do banco de dados, as mudanças podem ser feitas de forma mais simples e sem a necessidade de reescrever grandes partes do código.
 
+- Dia 03 de setembro de 2024, implementei dois novos métodos utilizando JPQL com o objetivo de aprofundar meus conhecimentos em consultas personalizadas e manipulação de dados complexos.
+
+  - Listagem do Top 5 Episódios de uma Série: O primeiro método foi criado para listar os 5 episódios mais bem avaliados de uma série específica, informada pelo usuário. A consulta usa JPQL para ordenar os episódios em ordem decrescente com base no atributo de avaliação, garantindo que os episódios com maior pontuação apareçam primeiro. Essa abordagem permite ao usuário visualizar rapidamente os episódios de destaque de uma série, com flexibilidade para adaptar a ordenação conforme necessário.
+
+  - Listagem de Episódios por Data de Lançamento: O segundo método busca todos os episódios lançados a partir de uma data específica informada pelo usuário. A consulta explora o uso de comparações de datas em JPQL, permitindo filtrar episódios com base em seu lançamento. Esse método foi projetado para entender melhor como JPQL trata dados de tipo Date e garantir que as consultas sejam eficientes e portáveis entre diferentes sistemas de banco de dados.
 
