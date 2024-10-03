@@ -37,13 +37,14 @@ public class Principal {
                     1 - Buscar séries
                     2 - Buscar episódios
                     3 - Listar séries buscadas
-                    4 - Buscar serie por titulo
+                    4 - Buscar série por titúlo
                     5 - Buscar séries por ator
                     6 - Top 5 séries
-                    7 - Listar series por categoria
-                    8 - Listar series por numero de temporadas e avaliação
-                    9 - Buscar episodio pro trecho
-                    10 - Buscar top episodios de uma série
+                    7 - Listar séries por categoria
+                    8 - Listar séries por numero de temporadas e avaliação
+                    9 - Buscar episódio pro trecho
+                    10 - Buscar top episódios de uma série
+                    11 - Buscar episódios a partir de uma data
                     
                     0 - Sair                                 
                     """;
@@ -82,6 +83,9 @@ public class Principal {
                     break;
                 case 10:
                     buscarTopEpisodiosPorSerie();
+                    break;
+                case 11:
+                    buscarEpisodiosDepoisDeUmaData();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -215,6 +219,19 @@ public class Principal {
                     System.out.printf("Série: %s Temporada %s - Episódio %s - %s - Avaliação %s\n",
                             e.getSerie().getTitulo(), e.getTemporada(),
                             e.getNumeroEpisodio(), e.getTitulo(), e.getAvaliacao()));
+        }
+    }
+
+    private void buscarEpisodiosDepoisDeUmaData() {
+        buscarSeriePorTitulo();
+        Serie serie = serieBuscada.get();
+        if(serieBuscada.isPresent()){
+            System.out.println("Digite o ano limite de lançamento");
+            var anoLancamento = leitura.nextInt();
+            leitura.nextLine();
+
+            List<Episodio> episodiosAno = repositorio.episodiosPorSerieEAno(serie, anoLancamento);
+            episodiosAno.forEach(System.out::println);
         }
     }
 }
