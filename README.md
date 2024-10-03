@@ -62,3 +62,9 @@ foi criada uma classe Série para representar a entidade com seus dados específ
 
   - Listagem de Episódios por Data de Lançamento: O segundo método busca todos os episódios lançados a partir de uma data específica informada pelo usuário. A consulta explora o uso de comparações de datas em JPQL, permitindo filtrar episódios com base em seu lançamento. Esse método foi projetado para entender melhor como JPQL trata dados de tipo Date e garantir que as consultas sejam eficientes e portáveis entre diferentes sistemas de banco de dados.
 
+## Conclusão
+O Screenmatch representa um marco no aprendizado e aplicação de conceitos avançados de programação em Java, com foco em persistência de dados e consultas complexas usando o Spring Data JPA. Ao longo do desenvolvimento, o projeto incorporou a funcionalidade de consumo de APIs, permitindo que dados sobre séries fossem obtidos de forma dinâmica e enriquecidos com traduções utilizando a API MyMemory.
+
+A estrutura robusta do sistema, fundamentada no uso de JPA e Hibernate, garantiu uma modelagem eficaz das entidades e suas relações, facilitando a persistência e a recuperação eficiente de informações. As implementações de derived queries e JPQL não apenas melhoraram a performance das consultas, mas também proporcionaram ao usuário uma experiência de busca rica e personalizada, permitindo filtrar séries por diversos critérios.
+
+Com esse projeto, fica evidente a importância de uma arquitetura bem planejada e a utilização de boas práticas no desenvolvimento de aplicações. O Screenmatch está posicionado para evoluir e se adaptar a novos desafios, refletindo o compromisso com a qualidade e a inovação no desenvolvimento de software.
